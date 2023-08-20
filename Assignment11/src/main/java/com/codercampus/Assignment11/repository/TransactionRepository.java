@@ -23,10 +23,6 @@ public class TransactionRepository {
 		return transactions;
 	}
 	
-	public Transaction findById(Integer transactionId) {
-		Transaction transaction = transactions.get(transactionId);
-		return transaction;
-	}
 
 	@SuppressWarnings("unchecked")
 	private void populateData() {

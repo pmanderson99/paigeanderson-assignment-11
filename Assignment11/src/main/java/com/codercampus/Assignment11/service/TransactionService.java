@@ -2,6 +2,7 @@ package com.codercampus.Assignment11.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,12 @@ public class TransactionService {
 		return transaction;
 	}
 	
-	public Transaction findById(Integer transactionId) {
-        return transactionRepo.findById(transactionId);
+	public Transaction findById(Long transactionId) {
+		Optional<Transaction> transactionOptnl = transactionRepo.findAll()
+                .stream()
+                .filter(transaction -> transaction.getId().equals(transactionId))
+                .findAny();
+        System.out.println(transactionOptnl.toString());
+        return transactionOptnl.orElse(new Transaction());
     }
 }
