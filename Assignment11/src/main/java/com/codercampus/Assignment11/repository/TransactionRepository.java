@@ -22,6 +22,13 @@ public class TransactionRepository {
 	public List<Transaction> findAll () {
 		return transactions;
 	}
+	
+	public Transaction findById(Long transactionId) {
+		return transactions.stream()
+				.filter(purchase -> purchase.getId().equals(transactionId))
+				.findFirst()
+				.orElse(null);
+	}
 
 	@SuppressWarnings("unchecked")
 	private void populateData() {
