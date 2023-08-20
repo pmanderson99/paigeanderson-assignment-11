@@ -23,11 +23,9 @@ public class TransactionRepository {
 		return transactions;
 	}
 	
-	public Transaction findById(Long transactionId) {
-		return transactions.stream()
-				.filter(purchase -> purchase.getId().equals(transactionId))
-				.findFirst()
-				.orElse(null);
+	public Transaction findById(Integer transactionId) {
+		Transaction transaction = transactions.get(transactionId);
+		return transaction;
 	}
 
 	@SuppressWarnings("unchecked")
